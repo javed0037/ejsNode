@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Welcome to BetFire cricket</title>
+</head>
+
+<body>
+  <form action="/team_name_url/" method="post">
+    <table class="table">
+      <tr>
+        <h4>that backlay price form apiurl</h5>
+          <tr>
+        <th>runners</th> <th>BACK</th> <th>LAY</th>
+        </tr>
+
+          <% for (var i = 0; i < quotation[0].runners.length; i++) { %>
+            <tr>
+            <td><%= quotation[0].runners[i].selectionId %></td>
+
+          <% for (var j = 0; j < quotation[0].runners[i].back.length; j++) { %>
+
+<td>            <%= (quotation[0].runners[i].back[j].price)?quotation[0].runners[i].back[j].price : 0  %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+          <% } %>
+        </tr>
+          <% } %>
+        <% for (var i = 0; i < quotation[0].runners.length; i++) { %>
+        <% for (var j = 0; j < quotation[0].runners[i].lay.length; j++) {%>
+        <td>
+          <%= (quotation[0].runners[i].lay[j].price)?quotation[0].runners[i].lay[j].price : 0 %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <% } %>
+        <% } %>
+      </tr>
+    </table>
+    <br /><br />
+    <table class="table">
+      <tr>
+        <h2>that backlay price form redis...</h2>
+        <th>BACK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <% for (var i = 0; i < quotation1[0].runners.length; i++) { %>
+        <!-- <%if (quotation1[0].runners[i].ex.availableToBack.length > 0) { %> -->
+        <% for (var j = 0; j < quotation1[0].runners[i].ex.availableToBack.length; j++) {%>
+
+        <td>
+          <%=(quotation1[0].runners[i].ex.availableToBack[j].price)?quotation1[0].runners[i].ex.availableToBack[j].price : 0 %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <% } %>
+        <!-- <% } %>
+        <td>0</td> -->
+        <% } %>
+      </tr>
+
+    </table>
+    <table>
+
+      <tr>
+        <th>LAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+        <% for (var i = 0; i < quotation1[0].runners.length; i++) { %>
+        <!-- <%if (quotation1[0].runners[i].ex.availableToLay.length > 0) { %> -->
+        <% for (var j = 0; j < quotation1[0].runners[i].ex.availableToLay.length; j++) {%>
+        <td>
+          <%= (quotation1[0].runners[i].ex.availableToLay[j].price)?quotation1[0].runners[i].ex.availableToLay[j].price : 0 %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <% } %>
+        <!-- <% } %>
+        <td>0</td> -->
+        <% } %>
+      </tr>
+    </table>
+
+  </form>
+</body>
+
+</html>
