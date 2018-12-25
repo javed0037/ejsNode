@@ -19,7 +19,7 @@ router.get('/', async function (req, res, next) {
   arr.push(JSON.parse(value));
 }else
  {
-    return res.send('<h2>there are no record in redis regarding this marketId </h2>');
+    return res.send('<h2> no records </h2>');
  }
   var config = {
     headers: {
@@ -34,7 +34,7 @@ router.get('/', async function (req, res, next) {
 
       return res.render('index', { quotation: quotation, quotation1: response.data });
     }else {
-        return res.send('<h2>there are no record in db regarding this marketId </h2>');
+        return res.send('<h2>no records </h2>');
     }
     }).catch(e => {
       console.log("threre are the error", e);
