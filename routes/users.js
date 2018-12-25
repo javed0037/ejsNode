@@ -15,9 +15,12 @@ router.get('/', async function (req, res, next) {
   let arr = [];
   var value = await client.get(marketId)
   if(value){
-  console.log("there are the data for this id",value)
+ console.log("there are the data from the redis server",value)
   arr.push(JSON.parse(value));
-}
+}else
+ {
+    return res.send('<h2>there are no record in redis regarding this marketId </h2>');
+ }
   var config = {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -25,10 +28,14 @@ router.get('/', async function (req, res, next) {
   };
   axios.post("http://178.79.178.166/api/?marketid=" + marketId + "&apikey=ieyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InNoYWt0aXNoYXJtYSIsImlhd", {}, config)
     .then(response =>{
-      console.log("there are the data for this url",JSON.stringify(response.data));
+      if(response){
+      console.log("there are the data for  url",JSON.stringify(response.data));
       let quotation =   arr;
 
       return res.render('index', { quotation: quotation, quotation1: response.data });
+    }else {
+        return res.send('<h2>there are no record in db regarding this marketId </h2>');
+    }
     }).catch(e => {
       console.log("threre are the error", e);
       return res.json({
