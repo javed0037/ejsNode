@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/users', usersRouter);
-
+//  console.log("thats the process -----------------",process.env.SESSION)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
